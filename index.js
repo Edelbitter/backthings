@@ -31,3 +31,7 @@ router.get('/things', (request, response) => {
 
     response.json({ message: myResponse });
 });
+
+app.post('/', (req, res) => {
+
+})
