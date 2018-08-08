@@ -53,7 +53,7 @@ app.post('/', (req, res) => {
 
 app.post('/send',sendNotification)
 
-export function sendNotification(req,res) {
+function sendNotification(req,res) {
     const notificationPayload = {
         "notification": {
             "title": "Angular News",
