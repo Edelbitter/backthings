@@ -33,5 +33,5 @@ router.get('/things', (request, response) => {
 });
 
 app.post('/', (req, res) => {
-
+    res.json({ yo: "hoho" });
 })
