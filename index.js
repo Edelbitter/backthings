@@ -64,7 +64,7 @@ function sendNotification(req,res) {
         "notification": {
             "title": "Angular News",
             "body": "Newsletter Available!",
-            "icon": "assets/main-page-logo-small-hat.png",
+            //"icon": "assets/main-page-logo-small-hat.png",
             "vibrate": [100, 50, 100],
             "data": {
                 "dateOfArrival": Date.now(),
