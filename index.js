@@ -75,17 +75,15 @@ function sendNotification(req,res) {
         }
     }
 
+    exsubs.subscriptions.forEach(sub => console.log(JSON.stringify(sub)));
 
-    Promise.all(exsubs.subscriptions.map(sub => {
-        webpush.sendNotification(sub, JSON.stringify(notificationPayload));
+
+    Promise.all(exsubs.subscriptions.map(sub => webpush.sendNotification(sub, JSON.stringify(notificationPayload))))
+    .then(() => res.status(200).json({ message: 'Newsletter sent successfully.' }))
+    .catch(err => {
+        console.error("Error sending notification, reason: ", err);
         console.log("\n \n" + sub + "\n \n");
-        console.log("\n \n" + exsubs.subscriptions.length + "\n \n");
-    }))
-        .then(() => res.status(200).json({ message: 'Newsletter sent successfully.' }))
-        .catch(err => {
-            console.error("Error sending notification, reason: ", err);
-            console.log("\n \n" + sub + "\n \n");
-            res.sendStatus(500);
+        res.sendStatus(500);
             
-        });
+    });
 }
