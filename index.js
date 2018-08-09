@@ -1,5 +1,5 @@
 
-const exsubs = require('./subs');
+const exsubs = require('./subs.js');
 const express = require('express');
 const app = express();
 const router = express.Router();
