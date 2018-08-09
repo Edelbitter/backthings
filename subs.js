@@ -1,1 +1,1 @@
-export let subscriptions = [];
+module.exports.subscriptions = [];
