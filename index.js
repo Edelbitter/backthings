@@ -51,7 +51,7 @@ app.post('/', (req, res) => {
     res.json({ yo: req.body });
 });
 
-app.get('/send', sendNotification);
+app.post('/send', sendNotification);
 
 function sendNotification(req,res) {
     const notificationPayload = {
