@@ -1,4 +1,5 @@
-import { subscriptions } from './subs';
+
+const exsubs = require('./subs');
 const express = require('express');
 const app = express();
 const router = express.Router();
@@ -50,7 +51,7 @@ router.get('/things', (request, response) => {
 app.post('/', (req, res) => {
     const sub = req.body;
 
-    subscriptions.push(sub);
+    exsubs.subscriptions.push(sub);
     res.json({ yo: sub + JSON.stringify(sub) });
 });
 
@@ -75,10 +76,10 @@ function sendNotification(req,res) {
     }
 
 
-    Promise.all(subscriptions.map(sub => {
+    Promise.all(exsubs.subscriptions.map(sub => {
         webpush.sendNotification(sub, JSON.stringify(notificationPayload));
         console.log("\n \n" + sub + "\n \n");
-        console.log("\n \n" + subscriptions.length + "\n \n");
+        console.log("\n \n" + exsubs.subscriptions.length + "\n \n");
     }))
         .then(() => res.status(200).json({ message: 'Newsletter sent successfully.' }))
         .catch(err => {
