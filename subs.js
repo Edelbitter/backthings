@@ -1,1 +1,1 @@
-module.exports.subscriptions = ["test2"];
+module.exports.subscriptions = [];

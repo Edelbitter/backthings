@@ -54,7 +54,7 @@ app.post('/', (req, res) => {
     const sub = req.body;
 
     exsubs.subscriptions.push(sub);
-    res.json({ yo: sub + JSON.stringify(sub) });
+    res.json({ yo: sub });
 });
 
 app.post('/send', sendNotification);
