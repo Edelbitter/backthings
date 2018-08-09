@@ -32,7 +32,7 @@ app.use('/api', router);
 
 router.get('/', (request, response) => {
     response.json({ eins: 'hihohiho', zwei: 'osoloemio', drei: 'meh' });
-})
+});
 
 app.listen(port, () => console.log('\n --------------- listening -------------- \n'));
 
@@ -80,5 +80,6 @@ function sendNotification(req,res) {
         .catch(err => {
             console.error("Error sending notification, reason: ", err);
             res.sendStatus(500);
+            console.log(sub);
         });
 }
