@@ -77,7 +77,7 @@ function sendNotification(req,res) {
         }
     }
 
-    console.log(JSON.stringify(exsubs.subscriptions));
+    console.log(exsubs.subscriptions);
 
     Promise.all(Object.keys(exsubs.subscriptions).map(k => webpush.sendNotification(exsubs.subscriptions[k], JSON.stringify(notificationPayload))))
     .then(() => res.status(200).json({ message: 'Newsletter sent successfully.' }))
