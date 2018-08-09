@@ -53,7 +53,7 @@ router.get('/things', (request, response) => {
 app.post('/', (req, res) => {
     const sub = req.body;
 
-    exsubs.subscriptions[sub.auth] = sub;
+    exsubs.subscriptions[sub.endpoint] = sub;
     res.json({ yo: sub });
 });
 
