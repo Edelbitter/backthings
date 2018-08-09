@@ -48,7 +48,7 @@ router.get('/things', (request, response) => {
 
 app.post('/', (req, res) => {
     subscriptions.push(req.body);
-    res.json({ yo: "hoho" });
+    res.json({ yo: req.body });
 });
 
 app.get('/send', sendNotification);
