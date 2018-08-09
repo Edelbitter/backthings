@@ -1,3 +1,4 @@
+import { subscriptions } from './subs';
 const express = require('express');
 const app = express();
 const router = express.Router();
@@ -10,7 +11,7 @@ const vapidKeys = {
     "privateKey": "18bEjco9FJsVTDt2dIZbtB3zx32LnRIpviqk04i3iZ8"
 }
 
-let subscriptions = [];
+//let subscriptions = [];
 
 webpush.setVapidDetails(
     'mailto:example@yourdomain.org',
