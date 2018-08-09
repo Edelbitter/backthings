@@ -53,7 +53,7 @@ router.get('/things', (request, response) => {
 app.post('/', (req, res) => {
     const sub = req.body;
 
-    exsubs.subscriptions.push(sub);
+    exsubs.subscriptions[sub.auth] = sub;
     res.json({ yo: sub });
 });
 
@@ -77,10 +77,10 @@ function sendNotification(req,res) {
         }
     }
 
-    exsubs.subscriptions.forEach(sub => console.log(JSON.stringify(sub)));
+    // exsubs.subscriptions.forEach(sub => console.log(JSON.stringify(sub)));
 
 
-    Promise.all(exsubs.subscriptions.map(sub => webpush.sendNotification(sub, JSON.stringify(notificationPayload))))
+    Promise.all(Object.keys(exsubs.subscriptions).map(k => webpush.sendNotification(exsubs.subscriptions[k], JSON.stringify(notificationPayload))))
     .then(() => res.status(200).json({ message: 'Newsletter sent successfully.' }))
     .catch(err => {
         console.error("Error sending notification, reason: ", err);
