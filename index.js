@@ -80,6 +80,6 @@ function sendNotification(req,res) {
         .catch(err => {
             console.error("Error sending notification, reason: ", err);
             res.sendStatus(500);
-            console.log(sub);
+            console.log("\n \n"+sub);
         });
 }
