@@ -34,7 +34,7 @@ router.get('/', (request, response) => {
     response.json({ eins: 'hihohiho', zwei: 'osoloemio', drei: 'meh' });
 })
 
-app.listen(port, () => console.log('listening'));
+app.listen(port, () => console.log('\n --------------- listening -------------- \n'));
 
 router.get('/things', (request, response) => {
     var urlParts = url.parse(request.url, true);
@@ -47,8 +47,10 @@ router.get('/things', (request, response) => {
 });
 
 app.post('/', (req, res) => {
-    subscriptions.push(req.body);
-    res.json({ yo: req.body });
+    const sub = req.body;
+
+    subscriptions.push(sub);
+    res.json({ yo: sub + JSON.stringify(sub) });
 });
 
 app.post('/send', sendNotification);
