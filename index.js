@@ -53,7 +53,7 @@ app.post('/', (req, res) => {
     res.json({ yo: sub + JSON.stringify(sub) });
 });
 
-app.post('/send', sendNotification).subscribe.then(console.log("send subscribe").catch(console.log("catch subscribe");
+app.post('/send', sendNotification).subscribe.then(console.log("send subscribe")).catch(console.log("catch subscribe"));
 
 function sendNotification(req,res) {
     const notificationPayload = {
