@@ -6,6 +6,7 @@ const router = express.Router();
 const port = process.env.PORT || 3000;
 const url = require('url');
 const webpush = require('web-push');
+const olymp = require('./olympic.js');
 
 const vapidKeys = {
     "publicKey": "BAQsFOEQGlL7T08PGFDSLcsYXrbfBndZjx8ZTtmLsFbNdbpW06mxvdjX6P7jgTJWmihBHrQ3cFFOdzHjrbP6RI8",
@@ -22,6 +23,7 @@ webpush.setVapidDetails(
 
 app.use(express.json());
 
+// CORS
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", '*');
     res.header("Access-Control-Allow-Credentials", true);
@@ -50,6 +52,8 @@ router.get('/things', (request, response) => {
     response.json({ message: myResponse });
 });
 
+
+// subscribe to notifications
 app.post('/', (req, res) => {
     const sub = req.body;
 
@@ -57,13 +61,14 @@ app.post('/', (req, res) => {
     res.json({ yo: sub });
 });
 
+// send notifications to all subscribers
 app.post('/send', sendNotification);
 
 function sendNotification(req,res) {
     const notificationPayload = {
         "notification": {
-            "title": "Angular News",
-            "body": "Newsletter Available!",
+            "title": "pconas rocks",
+            "body": "it's a notification!!",
             "icon": "assets/icon-192x192.png",
             "vibrate": [100, 50, 100],
             "data": {
@@ -88,3 +93,7 @@ function sendNotification(req,res) {
             
     });
 }
+
+app.get('/olympic', (req, res) => {
+    res.json(olymp.olympic);
+});
