@@ -97,3 +97,16 @@ function sendNotification(req,res) {
 app.get('/olympic', (req, res) => {
     res.json(olymp.olympic);
 });
+
+app.get('/olympic/', (req, res) => {
+
+
+    res.json(olymp.olympic);
+});
+
+let water;
+
+app.post('/water/', (req, res) => {
+    water = req.body;
+    res.json(water);
+}))
